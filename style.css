@@ -1,0 +1,26 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: white;
+    font-size: 24px;
+    font-weight: 600;
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    font-family: monospace, monospace;
+}
+
+div {
+    display: flex;
+    align-items: center;
+}
+
+img {
+    display: inline-block;
+    height: 2rem;
+}
