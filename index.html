@@ -64,28 +64,11 @@
         <meta name="theme-color" content="#ffffff" />
     </head>
     <body>
-        <div style="display: flex; flex-direction: column; gap: 10px">
+        <div style="display: flex; flex-direction: column; gap: 5px">
             <div>Hi There, I'm Gajraj.</div>
             <div>I'm a Software Engineer.</div>
             <div>I'm a senior at IIT Mandi.</div>
-            <div>
-                <div>Checkout my resume ->&nbsp;</div>
-                <div style="height: 1.25rem">
-                    <a
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        href="https://bit.ly/3bv1vor"
-                    >
-                        <img
-                            height="32"
-                            width="32"
-                            src="images/resume.png"
-                            alt="resume"
-                        />
-                    </a>
-                </div>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 10px">
+            <div style="display: flex; gap: 10px">
                 <div>Connect with me,</div>
                 <div style="display: flex; gap: 20px">
                     <a
@@ -114,14 +97,27 @@
                     </a>
                 </div>
             </div>
+            <div class="resumeDiv" style="margin: 5px">
+                <div>Checkout my resume ->&nbsp;</div>
+                <div style="display: flex; gap: 0.5rem; height: 1.25rem">
+                    <button id="DS" onclick="setResumeLink('DS')">
+                        Data Science
+                    </button>
+                    <button id="SDE" onclick="setResumeLink('SDE')">SDE</button>
+                </div>
+            </div>
+            <iframe id="resume" width="640" height="480"></iframe>
         </div>
         <a
-            style="position: absolute; bottom: 0; right: 0; font-size: 10px"
+            style="position: fixed; bottom: 0; right: 0; font-size: 10px"
             href="https://www.flaticon.com/free-icons/desert"
             title="desert icons"
             >Favicon created by Freepik - Flaticon</a
         >
-
+        <script src="script.js"></script>
+        <script>
+            setResumeLink("SDE");
+        </script>
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script
             async

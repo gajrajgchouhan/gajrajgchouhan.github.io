@@ -6,7 +6,7 @@
 
 body {
     background-color: white;
-    font-size: 24px;
+    font-size: 14px;
     font-weight: 600;
     width: 100vw;
     height: 100vh;
@@ -23,4 +23,41 @@ div {
 img {
     display: inline-block;
     height: 2rem;
+}
+
+button {
+    background-color: white;
+    border-width: 2px;
+    border-color: black;
+    border-radius: 4px;
+    color: black;
+    font-size: 12px;
+    font-family: monospace, monospace;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+
+button.active {
+    background-color: black;
+    color: white;
+}
+
+#resume {
+    width: 100%;
+    max-width: 40rem;
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 12px;
+        margin-top: 10px;
+    }
+    button {
+        font-size: 12px;
+    }
+    .resumeDiv {
+        flex-direction: column;
+        gap: 16px;
+    }
 }
