@@ -1,0 +1,18 @@
+---
+layout: layouts/base.njk
+---
+<h3 id="logo"><a href="/">&larr; {{ metadata.siteName }}</a></h3>
+<header>
+  <h1>{{ title }}</h1>
+  <div class="date">{{ page.date | dateReadable }}</div>
+</header>
+<article>
+  {{ content | safe }}
+  {% set cols = series | postCollections %}
+  {% if cols.length > 0 %}
+  <div class="collection-corner">
+    In
+    {% for c in cols %}<a href="/collection-{{ c.slug }}/">{{ c.name }}</a>{% if not loop.last %}, {% endif %}{% endfor %}
+  </div>
+  {% endif %}
+</article>

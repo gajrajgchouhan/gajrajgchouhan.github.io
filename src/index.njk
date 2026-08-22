@@ -1,0 +1,33 @@
+---
+layout: layouts/base.njk
+permalink: /
+eleventyExcludeFromCollections: true
+---
+<h3 id="home-page-logo"><a href="/">{{ metadata.siteName }}</a></h3>
+<header>
+  <p>{{ metadata.tagline }}</p>
+</header>
+<article id="archive_container">
+  <section>
+    <h3>Most recently</h3>
+    <ul>
+      {% for post in collections.listedPosts | limit(5) %}
+      <li><a href="{{ post.url }}">{{ post.data.title }}</a> &mdash; <span class="date">{{ post.date | dateReadable }}</span></li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% if collections.siteCollections.length > 0 %}
+  <section>
+    <h3>Collections</h3>
+    <ul>
+      {% for c in collections.siteCollections %}
+      <li><a href="/collection-{{ c.slug }}/">{{ c.name }}</a></li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+  <section>
+    <h3>Archives</h3>
+    <div><a href="/archive/">See the full archive &rarr;</a></div>
+  </section>
+</article>
