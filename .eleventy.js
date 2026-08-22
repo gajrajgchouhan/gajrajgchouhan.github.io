@@ -1,4 +1,7 @@
+import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
+
 export default function (eleventyConfig) {
+  eleventyConfig.addPlugin(syntaxHighlight);
   eleventyConfig.addPassthroughCopy({ "src/style.css": "style.css" });
   eleventyConfig.addPassthroughCopy({ "src/images": "images" });
   eleventyConfig.addPassthroughCopy({ "src/CNAME": "CNAME" });
@@ -46,6 +49,20 @@ export default function (eleventyConfig) {
       .sort((a, b) => b.date - a.date)
   );
 
+  eleventyConfig.addCollection("pinnedPosts", (api) =>
+    api
+      .getFilteredByGlob("src/posts/*.md")
+      .filter((p) => listed(p) && p.data.pinned)
+      .sort((a, b) => (a.data.pinnedOrder ?? 0) - (b.data.pinnedOrder ?? 0))
+  );
+
+  eleventyConfig.addCollection("recentPosts", (api) =>
+    api
+      .getFilteredByGlob("src/posts/*.md")
+      .filter((p) => listed(p) && !p.data.pinned)
+      .sort((a, b) => b.date - a.date)
+  );
+
   eleventyConfig.addCollection("postsByYear", (api) => {
     const posts = api
       .getFilteredByGlob("src/posts/*.md")
@@ -87,7 +104,7 @@ export default function (eleventyConfig) {
       includes: "_includes",
       output: "_site",
     },
-    markdownTemplateEngine: "njk",
+    markdownTemplateEngine: false,
     htmlTemplateEngine: "njk",
   };
 }
